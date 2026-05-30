@@ -30,7 +30,6 @@ This proposal does not attempt to introduce object-oriented runtime polymorphism
 
 Consider the following repeated definitions:
 
-cpp
 enum class TrafficLight : std::uint8_t { Red, Yellow, Green };
 
 enum class TrafficLightLeftArrow : std::uint8_t { Red, Yellow, Green, LeftArrow };
@@ -47,7 +46,6 @@ This paper proposes a language facility that allows a scoped enumeration to decl
 
 A possible syntax could be:
 
-cpp
 enum class TrafficLight : std::uint8_t { Red, Yellow, Green };
 
 enum class TrafficLightLeftArrow : TrafficLight { LeftArrow };
@@ -56,15 +54,12 @@ enum class TrafficLightRightArrow : TrafficLight { RightArrow };
 
 enum class TrafficLightTwoArrows : TrafficLight { LeftArrow, RightArrow };
 
-In this model, the extended enumeration reuses the enumerators of the base enumeration and adds its own enumerators. The exact rules for type identity, underlying type, name lookup, conversions, and storage representation would need to be specified precisely.
-
 5. Multiple Base Enumerations
 
 A derived scoped enumeration may also reuse enumerators from more than one base scoped enumeration.
 
 For example:
 
-cpp
 enum class BaseColor : std::uint8_t { Red, Yellow, Green };
 enum class ArrowSignal : std::uint8_t { LeftArrow, RightArrow };
 
